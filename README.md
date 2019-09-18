@@ -15,7 +15,7 @@ buildscript {
     }
     dependencies {
         ...
-        classpath 'com.github.bq:poeditor-android-gradle-plugin:0.2.5'
+        classpath 'com.github.bq:poeditor-android-gradle-plugin:0.2.6'
 }
 ```
 
@@ -32,6 +32,12 @@ poEditorPlugin.api_token = <poeditor_api_token>
 poEditorPlugin.project_id = <poeditor_project_id> 
 poEditorPlugin.default_lang = "en"
 poEditorPlugin.res_dir_path = "${project.rootDir}/app/src/main/res"
+poEditorPlugin.generate_tablet_res = false
+poEditorPlugin.excluded_language_codes = ""
+poEditorPlugin.replace_brand_name = true
+poEditorPlugin.brand_name_old = ""
+poEditorPlugin.brand_name_new = ""
+poEditorPlugin.keys_excluded_for_replacement = ""
 ```
 
 The complete attribute list:
@@ -42,6 +48,12 @@ Attribute                     | Description
 ```project_id```              | Poeditor project ID.
 ```default_lang```            | The lang to be used to build default ```strings.xml``` (```/values``` folder)
 ```res_dir_path```            | The path to the project's ```/res``` folder.
+```generate_tablet_res```     | The boolean for creating ```sw600dp``` folders for each language.
+```excluded_language_codes``` | Excluded languages writing like ```'en ru'```
+```replace_brand_name```      | The boolean.
+```brand_name_old```          | Name witch should to be replaced.
+```brand_name_new```          | The new name.
+```keys_excluded_for_r...nt```| The keys were should to be changed the brand name
 
 If you want to customize another property open a PR or leave a comment!
 

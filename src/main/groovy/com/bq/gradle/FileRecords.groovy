@@ -30,7 +30,7 @@ class FileRecords {
         _file_records = _parser.parseText(file)
     }
 
-    static def import_strings(model, file, lang_code, create_for_tablet = false) {
+    static def import_strings(model, file, lang_code) {
         FileRecords records = new FileRecords(model, file)
                 .remove_empty_nodes()
                 .replace_brand_name()
@@ -38,9 +38,9 @@ class FileRecords {
         def _modifier = records.values_modifier(lang_code)
         def _folder_path = records.create_folder_path(_modifier)
 
-        if (create_for_tablet) {
+        if (model.generateTabletRes) {
             records.replace_tabel_strings_to_his_own_records()
-            def _tablet_folder_path = records.create_folder_path(_modifier, create_for_tablet)
+            def _tablet_folder_path = records.create_folder_path(_modifier, model.generateTabletRes)
             println "Writing ${_tablet_folder_path}/strings.xml file"
             records.write_file(_tablet_folder_path, records.tablet_records())
         }
